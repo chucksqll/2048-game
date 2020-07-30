@@ -55,7 +55,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'webgame2048/build')
+            os.path.join(BASE_DIR, 'reactapp/build')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -122,5 +122,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'webgame2048/build/static'),
+    os.path.join(BASE_DIR, 'reactapp/build/static'),
 ]
