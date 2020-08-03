@@ -1,22 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+class App extends Component {
+	state = {
+		array: [[0,0,0,0],
+						[0,0,0,0],
+						[0,0,0,0],
+						[0,0,0,0],
+		],
+	};
 
-  return (
-    <div className="App">
+	Block = ({num}) => {
+		return <div>{num}</div>;
+	}
 
-        <div className="center-column">
+	render() {
+  	return (
+	    <div className="center-column">
+	    	{this.state.array.map((row,oneIndex) => 	
+	    			<div className="item-row">
 
-          <div className="item-row">
-            <span>django-react 2048</span>
-          </div>
+	    				{row.map((num) => 
+	    					<span className="block">{num}</span>
+	    				)}
+	    					
 
-        </div>
-     
-    </div>
-  );
+	    			</div>
+	    	)}
+	    </div>
+	  );
+	}
 }
 
 export default App;
