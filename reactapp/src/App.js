@@ -63,7 +63,6 @@ class App extends Component {
 	}
 
 	moveUp = () => {
-		console.log("down");
 		const values = [...this.state.values];
 		let toAddNewTile = false;
 		const move = () => {
@@ -76,7 +75,7 @@ class App extends Component {
 							if( j>3){
 								break;
 							}
-							if(this.state.values[j][k]!=0){
+							if(this.state.values[j][k]!==0){
 								values[i][k] = this.state.values[j][k];
 								values[j][k] = 0;
 								moved = true;
@@ -92,9 +91,9 @@ class App extends Component {
 		for(let k=0;k<3;k++) {
 			for(let i=0;i<4;i++) {
 				if(this.state.values[k][i]===this.state.values[k+1][i]){
-					values[k][i]= this.state.values[k][i]*2;
-					this.state.values[k+1][i] = 0;
-					if(this.state.values[k][i]!=0){
+					values[k][i] = this.state.values[k][i]*2;
+					values[k+1][i] = 0;
+					if(this.state.values[k][i]!==0){
 						toAddNewTile = true;
 					}
 
@@ -109,11 +108,93 @@ class App extends Component {
 	}
 
 	moveLeft = () => {
-		console.log("left")
+		const values = [...this.state.values];
+		let toAddNewTile = false;
+		const move = () => {
+			for(let k=0;k<4;k++){
+				for( let i=0;i<3; i++) {
+					if(this.state.values[k][i]===0) {
+						let moved = false;
+						let j = i+1;
+						while(!moved) {
+							if( j>3){
+								break;
+							}
+							if(this.state.values[k][j]!==0){
+								values[k][i] = this.state.values[k][j];
+								values[k][j] = 0;
+								moved = true;
+								toAddNewTile = true;
+							}
+							j = j+1;
+						}
+					}
+				}
+			}
+		}
+		move();
+		for(let k=0;k<3;k++) {
+			for(let i=0;i<4;i++) {
+				if(this.state.values[i][k]===this.state.values[i][k+1]){
+					values[i][k] = this.state.values[i][k]*2;
+					values[i][k+1] = 0;
+					if(this.state.values[i][k]!==0){
+						toAddNewTile = true;
+					}
+
+				}
+			}
+		}
+		move()
+		if(toAddNewTile){
+			this.addTiles();
+		}
+		this.setState({values});
 	}
 
 	moveRight = () => {
-		console.log("right")
+		const values = [...this.state.values];
+		let toAddNewTile = false;
+		const move = () => {
+			for(let k=0;k<4;k++){
+				for( let i=3;i>0; i--) {
+					if(this.state.values[k][i]===0) {
+						let moved = false;
+						let j = i-1;
+						while(!moved) {
+							if( j<0){
+								break;
+							}
+							if(this.state.values[k][j]!==0){
+								values[k][i] = this.state.values[k][j];
+								values[k][j] = 0;
+								moved = true;
+								toAddNewTile = true;
+							}
+							j = j-1;
+						}
+					}
+				}
+			}
+		}
+		move();
+		for(let k=3;k>0;k--) {
+			for(let i=0;i<4;i++) {
+				if(this.state.values[i][k]===this.state.values[i][k-1]){
+					values[i][k]= this.state.values[i][k]*2;
+					values[i][k-1] = 0;
+					if(this.state.values[i][k]!==0){
+						toAddNewTile = true;
+					}
+
+				}
+			}
+		}
+		move()
+		if(toAddNewTile){
+			this.addTiles();
+		}
+		this.setState({values});
 
 	}
 
@@ -131,7 +212,7 @@ class App extends Component {
 							if( j<0){
 								break;
 							}
-							if(this.state.values[j][k]!=0){
+							if(this.state.values[j][k]!==0){
 								values[i][k] = this.state.values[j][k];
 								values[j][k] = 0;
 								moved = true;
@@ -148,8 +229,8 @@ class App extends Component {
 			for(let i=0;i<4;i++) {
 				if(this.state.values[k][i]===this.state.values[k-1][i]){
 					values[k][i]= this.state.values[k][i]*2;
-					this.state.values[k-1][i] = 0;
-					if(this.state.values[k][i]!=0){
+					values[k-1][i] = 0;
+					if(this.state.values[k][i]!==0){
 						toAddNewTile = true;
 					}
 
