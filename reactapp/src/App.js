@@ -18,6 +18,15 @@ class App extends Component {
 		super();
 		this.reset();
 	}
+
+	componentDidMount() {
+		document.addEventListener("keydown", this.handleKeyDown);
+	}
+
+	componentWillUnmount() {
+    	document.removeEventListener("keydown", this.handleKeyDown);
+  	}
+
 	reset = () => {
 		const values = [...this.state.values];
 		for(let row=0;row<this.state.values.length;row++) {
@@ -206,7 +215,6 @@ class App extends Component {
 	}
 
 	moveDown = () => {
-
 		const values = [...this.state.values];
 		let toAddNewTile = false;
 		const move = () => {
@@ -261,6 +269,26 @@ class App extends Component {
 		}
 		this.setState({score});
 
+	}
+	handleKeyDown = (event) => {
+	    let left = 37;
+	    let up = 38;
+	    let right = 39;
+	    let down = 40;
+	    switch(event.keyCode) {
+	    	case left:
+	    		this.moveLeft();
+	    		break;
+	    	case up:
+	    		this.moveUp();
+	    		break;
+	    	case right:
+	    		this.moveRight();
+	    		break;
+    		case down:
+	    		this.moveDown();
+	    		break;
+	    }
 	}
 	render() {
   	return (
