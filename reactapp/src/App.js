@@ -10,8 +10,14 @@ class App extends Component {
 						[0,0,0,0],
 						[0,0,0,0],
 		],
-		startTiles : 2
+		startTiles : 2,
+		score : 0
+
 	};
+	constructor() {
+		super();
+		this.reset();
+	}
 	reset = () => {
 		const values = [...this.state.values];
 		for(let row=0;row<this.state.values.length;row++) {
@@ -60,6 +66,7 @@ class App extends Component {
 				break;
 			}
 		}
+		this.countScore();
 	}
 
 	moveUp = () => {
@@ -199,7 +206,7 @@ class App extends Component {
 	}
 
 	moveDown = () => {
-		console.log("down");
+
 		const values = [...this.state.values];
 		let toAddNewTile = false;
 		const move = () => {
@@ -245,10 +252,23 @@ class App extends Component {
 
 	}
 
+	countScore = () => {
+		let score = 0;
+		for(let row=0;row<this.state.values.length;row++) {
+			for (let col = 0; col <this.state.values.length; col++) {
+				score += this.state.values[row][col];
+			}
+		}
+		this.setState({score});
 
+	}
 	render() {
   	return (
   		<React.Fragment>
+  			<div className="score">
+  				Score: {this.state.score}
+  			</div>
+
 		    <div className="center-column">
 		    	{this.state.values.map((row,oneIndex) => 	
 		    			<div className="item-row">

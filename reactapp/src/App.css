@@ -49,3 +49,9 @@ body{
     height:50px;
 
 }
+.score{
+    color: #12bdaf;
+    font-size:28px;
+    text-align: center;
+    margin: 5px;
+}
