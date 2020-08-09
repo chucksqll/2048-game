@@ -291,6 +291,7 @@ class App extends Component {
 	    }
 	}
 	render() {
+
   	return (
   		<React.Fragment>
   			<div className="score">
@@ -302,7 +303,7 @@ class App extends Component {
 		    			<div className="item-row">
 
 		    				{row.map((num) => 
-		    					<span className="block">{num}</span>
+		    					<span className={"block "+"block"+num}>{num}</span>
 		    				)}		
 
 		    			</div>
@@ -311,7 +312,7 @@ class App extends Component {
 		   	
 		    <div className="arrows">
 		    	<div>
-		    		<button className="arrow-button" onClick={this.moveUp}>up</button>
+		    		<button className="arrow-button btn-primary" onClick={this.moveUp}>up</button>
 		    	</div>
 		    	<div>
 			    	<button className="arrow-button" onClick={this.moveLeft}>left</button>

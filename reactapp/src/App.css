@@ -2,14 +2,13 @@ body{
   background-color: #282c34;
 }
 
-
 .center-column{
     display: block;
     width:400px;
     height: 400px;
     margin: 15px auto;
     padding:15px;
-    background-color: #fff;
+    background-color: #2C3D63;
     border-radius: 3px;
     box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
 }
@@ -25,24 +24,94 @@ body{
 .block{
     display: inline-flex;
     align-items: center;
-    text-align: center;
-    background-color: #11a5c0;
+    justify-content: center;
+    background-color: #bbb;
     margin: 4px;
     /*padding: 20px;*/
     width: 80px;
     height: 80px;
     border-radius: 3px;
-    color: #fff;
-    font-size: 24px;
-    font-weight: 900px;
+    color: #bbb;
+    font-size: 30px;
+    font-weight: bold;
     box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
 }
+.block2{
+    background-color: #FFFFE0;
+    color : #444;
+}
+.block4{
+    background-color: #FFEFD5;
+    color : #444;
+}
+.block8{
+    background-color: #EEE8AA;
+    color : #555;
+}
+.block16{
+    background-color: #BC8F8F;
+    color : #444;
+}
+.block32{
+    background-color: #45AC45;
+    color : #444;
+}
+.block64{
+    background-color: #3CB371;
+    color : #444;
+}
+.block128{
+    background-color: #87CEFA;
+    color : #222;
+}
+.block256{
+    background-color: #1E90FF;
+    color : #333;
+}
+.block512{
+    background-color: #4169E1;
+    color : #ddd;
+}
+.block1024{
+    background-color: #7B2B80;
+    color : #bbb;
+}
+.block2048{
+    background-color: #FF00FF;
+    color : #AFEEEE;
+}
+.block4096{
+    background-color: #DA70D6;
+    color : #555;
+}
+
+.block8192{
+    background-color: #FF69B4;
+    color : #555;
+}
+.block16384{
+    background-color: #FF1493;
+    color : #333;
+}
+.block32768{
+    background-color: #FF00FF;
+    color : #222;
+}
+.block65536{
+    background-color: #FFD700;
+    color : #000;
+}
+.block131072{
+    background-color: #000;
+    color : #fff;
+}
+
+
 .arrows{
     text-align:center;
     margin: 15px auto;
 }
 .arrow-button{
-    /*display: block;*/
     margin: 5px;
     color: #000;
     width:50px;
