@@ -293,41 +293,49 @@ class App extends Component {
 	render() {
 
   	return (
-  		<React.Fragment>
-  			<div className="score">
-  				Score: {this.state.score}
-  			</div>
+  		<div className="wrapper">
 
-		    <div className="center-column">
-		    	{this.state.values.map((row,oneIndex) => 	
-		    			<div className="item-row">
+  			<div className="container-fluid">
+	  			<div className="score">
+	  				Score: {this.state.score}
+	  				
+	  			</div>
+	  			<div className="row justify-content-center">
+	  				<div className="col-10">
+	  					<p className="intro">Join the numbers and get to the 2048 tile!</p>
+	  				</div>
+	  				<div className="col-2">
+	  					<button className="btn btn-info btn-sm" onClick={this.reset}>New Game</button>
+	  				</div>
+	  			</div>
 
-		    				{row.map((num) => 
-		    					<span className={"block "+"block"+num}>{num}</span>
-		    				)}		
+			    <div className="game-container">
+			    	{this.state.values.map((row,oneIndex) => 	
+			    			<div className="item-row">
 
-		    			</div>
-		    	)}
-		    </div>
-		   	
-		    <div className="arrows">
-		    	<div>
-		    		<button className="arrow-button btn-primary" onClick={this.moveUp}>up</button>
-		    	</div>
-		    	<div>
-			    	<button className="arrow-button" onClick={this.moveLeft}>left</button>
-			    	<button className="arrow-button" onClick={this.moveRight}>right</button>
+			    				{row.map((num) => 
+			    					<span className={"block "+"block"+num}>{num}</span>
+			    				)}		
+
+			    			</div>
+			    	)}
 			    </div>
-			    <div>
-		    		<button className="arrow-button" onClick={this.moveDown}>down</button>
-	    		</div>
-		    </div>
+			   	
+			    <div className="arrows">
+			    	<div>
+			    		<button className="arrow-button btn btn-primary" onClick={this.moveUp}>up</button>
+			    	</div>
+			    	<div>
+				    	<button className="arrow-button btn btn-primary" onClick={this.moveLeft}>left</button>
+				    	<button className="arrow-button btn btn-primary" onClick={this.moveRight}>right</button>
+				    </div>
+				    <div>
+			    		<button className="arrow-button btn btn-primary" onClick={this.moveDown}>down</button>
+		    		</div>
+			    </div>
+			</div>
 
-		    <div>
-		    	<button onClick={this.reset}>reset</button>
-		    </div>
-
-	    </React.Fragment>
+	    </div>
 	  );
 	}
 }
