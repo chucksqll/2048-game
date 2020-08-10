@@ -271,6 +271,7 @@ class App extends Component {
 
 	}
 	handleKeyDown = (event) => {
+		event.preventDefault();
 	    let left = 37;
 	    let up = 38;
 	    let right = 39;
@@ -296,16 +297,27 @@ class App extends Component {
   		<div className="wrapper">
 
   			<div className="container-fluid">
-	  			<div className="score">
-	  				Score: {this.state.score}
-	  				
-	  			</div>
+  				<div className="row header">
+  					<div className="col-4 justify-content-left">
+  						<h1 className="title">2048</h1>
+  					</div>
+		  			<div className="col-4 score justify-content-center">
+		  				Score: {this.state.score}
+		  			</div>
+		  			<div className="col-3 score justify-content-right">
+		  				Best: {this.state.score}
+		  			</div>
+
+		  		</div>
 	  			<div className="row justify-content-center">
-	  				<div className="col-10">
-	  					<p className="intro">Join the numbers and get to the 2048 tile!</p>
+	  				<div className="col-8">
+	  					<p className="intro">
+	  						Join the numbers and get to the 
+	  						<strong> 2048 tile!</strong>
+	  					</p>
 	  				</div>
-	  				<div className="col-2">
-	  					<button className="btn btn-info btn-sm" onClick={this.reset}>New Game</button>
+	  				<div className="col-4 text-right">
+	  					<button className="btn btn-info " onClick={this.reset}>New Game</button>
 	  				</div>
 	  			</div>
 
@@ -321,17 +333,33 @@ class App extends Component {
 			    	)}
 			    </div>
 			   	
-			    <div className="arrows">
-			    	<div>
-			    		<button className="arrow-button btn btn-primary" onClick={this.moveUp}>up</button>
-			    	</div>
-			    	<div>
-				    	<button className="arrow-button btn btn-primary" onClick={this.moveLeft}>left</button>
-				    	<button className="arrow-button btn btn-primary" onClick={this.moveRight}>right</button>
+			    {/* <div className="arrows"> */}
+			    {/* 	<div> */}
+			    {/* 		<button className="arrow-button btn btn-primary" onClick={this.moveUp}>up</button> */}
+			    {/* 	</div> */}
+			    {/* 	<div> */}
+				   {/*  	<button className="arrow-button btn btn-primary" onClick={this.moveLeft}>left</button> */}
+				   {/*  	<button className="arrow-button btn btn-primary" onClick={this.moveRight}>right</button> */}
+				   {/*  </div> */}
+				   {/*  <div> */}
+			    {/* 		<button className="arrow-button btn btn-primary" onClick={this.moveDown}>down</button> */}
+		    	{/* 	</div> */}
+			    {/* </div> */}
+			    <div className="row game-explanation">
+			    	<div className="col-12">
+				    	<p>
+				    		<strong>HOW TO PLAY: </strong>
+				    		Use your arrow keys to move the tiles.
+				    		When two tiles with the same number touch,
+				    		<strong> they merge into one!</strong>
+				    	</p>
+				    	<p>
+				    		Created by 
+				    		<a href="http://witoldbanach.herokuapp.com/" target="_blank"> Witold Banach. </a>
+				    		 A clone of 2048 by 
+				    		 Gabriele Cirulli written using React.
+				    	</p>
 				    </div>
-				    <div>
-			    		<button className="arrow-button btn btn-primary" onClick={this.moveDown}>down</button>
-		    		</div>
 			    </div>
 			</div>
 

@@ -2,16 +2,18 @@ body{
   background-color: #282c34 !important;
 }
 .wrapper{
-    width:400px;
+    width:500px;
     display: block;
     margin: auto;
+}
+.title{
+    color: #fff;
+    font-size: 60px;
 }
 
 .game-container{
     display: block;
-    width:400px;
-    height: 400px;
-    margin: 15px auto;
+    margin: 10px auto;
     padding:15px;
     background-color: #2C3D63;
     border-radius: 3px;
@@ -19,6 +21,7 @@ body{
 }
 .intro{
     color: #fff;
+    font-size: 16px;
 }
 
 .item-row{
@@ -34,10 +37,9 @@ body{
     align-items: center;
     justify-content: center;
     background-color: #bbb;
-    margin: 4px;
-    /*padding: 20px;*/
-    width: 80px;
-    height: 80px;
+    margin: 5px;
+    width: 100px;
+    height: 100px;
     border-radius: 3px;
     color: #bbb;
     font-size: 30px;
@@ -131,4 +133,17 @@ body{
     font-size:28px;
     text-align: center;
     margin: 5px;
+}
+.game-explanation{
+    margin: 1px auto;
+    color: #fff;
+}
+.game-explanation p{
+/*     font-weight: bold;*/
+     font-size: 18px;
+
+}
+.game-explanation a{
+    color: #fff;
+    font-weight:bold;
 }
