@@ -332,19 +332,7 @@ class App extends Component {
 			    			</div>
 			    	)}
 			    </div>
-			   	
-			    {/* <div className="arrows"> */}
-			    {/* 	<div> */}
-			    {/* 		<button className="arrow-button btn btn-primary" onClick={this.moveUp}>up</button> */}
-			    {/* 	</div> */}
-			    {/* 	<div> */}
-				   {/*  	<button className="arrow-button btn btn-primary" onClick={this.moveLeft}>left</button> */}
-				   {/*  	<button className="arrow-button btn btn-primary" onClick={this.moveRight}>right</button> */}
-				   {/*  </div> */}
-				   {/*  <div> */}
-			    {/* 		<button className="arrow-button btn btn-primary" onClick={this.moveDown}>down</button> */}
-		    	{/* 	</div> */}
-			    {/* </div> */}
+
 			    <div className="row game-explanation">
 			    	<div className="col-12">
 				    	<p>
