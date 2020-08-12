@@ -11,9 +11,11 @@ class App extends Component {
 						[0,0,0,0],
 		],
 		startTiles : 2,
-		score : 0
-
+		score : 0,
+		touchStartX: 0,
+		touchStartY: 0,
 	};
+
 	constructor() {
 		super();
 		this.reset();
@@ -21,10 +23,47 @@ class App extends Component {
 
 	componentDidMount() {
 		document.addEventListener("keydown", this.handleKeyDown);
+
+		var gameView = document.getElementById("gameViewport");
+		gameView.addEventListener("touchstart", this.handleTouchStart);
+		gameView.addEventListener("touchend", this.handleTouchEnd);
 	}
+
+	handleTouchStart = event =>{
+		event.preventDefault();
+		let touchStartX = event.touches[0].clientX;
+  		let touchStartY = event.touches[0].clientY;
+		this.setState({touchStartX, touchStartY});
+	}
+
+	handleTouchEnd = event => {
+		event.preventDefault();
+
+		let endX=event.changedTouches[0].clientX;
+		let endY=event.changedTouches[0].clientY;
+		if(Math.abs(endX-this.state.touchStartX)>Math.abs(endY-this.state.touchStartY)) {
+			if(endX>this.state.touchStartX) {
+				this.moveRight();
+			}
+			else {
+				this.moveLeft();
+			}
+		}
+		if(Math.abs(endX-this.state.touchStartX)<Math.abs(endY-this.state.touchStartY )) {
+			if(endY>this.state.touchStartY ) {
+				this.moveDown();
+			}
+			else{
+				this.moveUp();
+			}
+		}
+	}
+		
 
 	componentWillUnmount() {
     	document.removeEventListener("keydown", this.handleKeyDown);
+    	document.removeEventListener("touchstart",this.handleTouchStart);
+    	document.removeEventListener("touchend", this.handleTouchEnd);
   	}
 
 	reset = () => {
@@ -321,7 +360,7 @@ class App extends Component {
 	  				</div>
 	  			</div>
 
-			    <div className="game-container">
+			    <div className="game-container" id="gameViewport">
 			    	{this.state.values.map((row,oneIndex) => 	
 			    			<div className="item-row">
 
