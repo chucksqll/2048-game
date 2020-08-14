@@ -12,13 +12,14 @@ class App extends Component {
 		],
 		startTiles : 2,
 		score : 0,
+		isGameOn: 1,
 		touchStartX: 0,
 		touchStartY: 0,
 	};
 
 	constructor() {
 		super();
-		this.reset();
+		// this.reset();
 	}
 
 	componentDidMount() {
@@ -77,6 +78,7 @@ class App extends Component {
 		for(let i=0;i<this.state.startTiles;i++){
 			this.addTiles();
 		}
+		document.getElementById("game-over").style.display = "none";
 
 	}
 	getRandomInt = max => {
@@ -92,6 +94,38 @@ class App extends Component {
 		}
 		return false;
 	}
+	isGameOver = () => {
+		//check if there are empty tiles
+		for(let row=0;row<this.state.values.length;row++) {
+			for (let col = 0; col <this.state.values.length; col++) {
+				if (this.state.values[row][col] === 0) {
+					return false;
+				}
+			}
+		}
+		//check if there are passing tiles horizontally
+		for(let row=0;row<this.state.values.length;row++) {
+			for (let col = 0; col <this.state.values.length-1; col++) {
+				if (this.state.values[row][col] === this.state.values[row][col+1]) {
+					return false;
+				}
+			}
+		}
+		//check if there are passing tiles vertically
+		for(let col=0;col<this.state.values.length;col++) {
+			for (let row = 0; row <this.state.values.length-1; row++) {
+				if (this.state.values[row][col] === this.state.values[row+1][col]) {
+					return false;
+				}
+			}
+		}
+		// var elem = document.getElementById('id');
+		// elem.style.display = 'block'; 
+		return true;
+
+
+	}
+
 
 	addTiles = () => {
 		const values = [...this.state.values];
@@ -110,7 +144,7 @@ class App extends Component {
 			}
 
 			if(!this.isAvaialbeTile()){
-				console.log("no tiles");
+				//prevent from infinite loop
 				break;
 			}
 		}
@@ -309,6 +343,7 @@ class App extends Component {
 		this.setState({score});
 
 	}
+
 	handleKeyDown = (event) => {
 		event.preventDefault();
 	    let left = 37;
@@ -329,15 +364,17 @@ class App extends Component {
 	    		this.moveDown();
 	    		break;
 	    }
+	    if(this.isGameOver()){
+	    	document.getElementById("game-over").style.display = "block";
+	    }
 	}
-	render() {
 
+	render() {
   	return (
   		<div className="wrapper">
-
   			<div className="container-fluid">
   				<div className="row header">
-  					<div className="col-4 justify-content-left">
+  						<div className="col-4 justify-content-left">
   						<h1 className="title">2048</h1>
   					</div>
 		  			<div className="col-4 score justify-content-center">
@@ -346,8 +383,8 @@ class App extends Component {
 		  			<div className="col-3 score justify-content-right">
 		  				Best: {this.state.score}
 		  			</div>
-
 		  		</div>
+
 	  			<div className="row justify-content-center">
 	  				<div className="col-8">
 	  					<p className="intro">
@@ -360,7 +397,10 @@ class App extends Component {
 	  				</div>
 	  			</div>
 
+	  			<div id="game-over">Game Over!</div>
+
 			    <div className="game-container" id="gameViewport">
+
 			    	{this.state.values.map((row,oneIndex) => 	
 			    			<div className="item-row">
 
@@ -370,6 +410,7 @@ class App extends Component {
 
 			    			</div>
 			    	)}
+
 			    </div>
 
 			    <div className="row game-explanation">
