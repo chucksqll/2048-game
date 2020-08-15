@@ -12,6 +12,7 @@ class App extends Component {
 		],
 		startTiles : 2,
 		score : 0,
+		bestScore: 0,
 		isGameOn: 1,
 		touchStartX: 0,
 		touchStartY: 0,
@@ -340,7 +341,14 @@ class App extends Component {
 				score += this.state.values[row][col];
 			}
 		}
-		this.setState({score});
+		let bestScore=0;
+		if(score>this.state.bestScore){
+			bestScore=score;
+		}
+		else{
+			bestScore=this.state.bestScore;
+		}
+		this.setState({score, bestScore});
 
 	}
 
@@ -381,7 +389,7 @@ class App extends Component {
 		  				Score: {this.state.score}
 		  			</div>
 		  			<div className="col-3 score justify-content-right">
-		  				Best: {this.state.score}
+		  				Best: {this.state.bestScore}
 		  			</div>
 		  		</div>
 

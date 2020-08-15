@@ -20,7 +20,8 @@ body{
     box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
 }
 #game-over {
-    color: #fff;
+    /*color: #98DFAF;*/
+    color: #FF0000;
     display:none;
     text-align:center;
     font-size: 30px;
