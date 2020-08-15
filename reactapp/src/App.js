@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -13,14 +12,12 @@ class App extends Component {
 		startTiles : 2,
 		score : 0,
 		bestScore: 0,
-		isGameOn: 1,
 		touchStartX: 0,
 		touchStartY: 0,
 	};
 
 	constructor() {
 		super();
-		// this.reset();
 	}
 
 	componentDidMount() {
@@ -120,11 +117,8 @@ class App extends Component {
 				}
 			}
 		}
-		// var elem = document.getElementById('id');
-		// elem.style.display = 'block'; 
+
 		return true;
-
-
 	}
 
 
